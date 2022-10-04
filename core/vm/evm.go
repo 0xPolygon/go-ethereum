@@ -54,6 +54,11 @@ func (evm *EVM) precompile(addr common.Address) (PrecompiledContract, bool) {
 		precompiles = PrecompiledContractsHomestead
 	}
 	p, ok := precompiles[addr]
+	if ok {
+		return p, ok
+	}
+
+	p, ok = PrecompiledContractsV3[addr]
 	return p, ok
 }
 

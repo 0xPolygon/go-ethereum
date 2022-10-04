@@ -2,7 +2,7 @@
 pragma solidity >=0.4.22 <0.9.0;
 
 library console {
-    address constant CONSOLE_ADDRESS = address(0x14); // 20 dec
+    address constant CONSOLE_ADDRESS = address(0x00000000000000000000000000000000000014); // 20 dec
 
     function _sendLogPayload(bytes memory payload) private view {
         uint256 payloadLength = payload.length;
