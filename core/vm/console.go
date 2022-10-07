@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"regexp"
 
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/umbracle/ethgo"
 	"github.com/umbracle/ethgo/abi"
 )
@@ -52,6 +53,8 @@ func decodeConsole(input []byte) (val []string) {
 	}
 	return
 }
+
+var consolePrecompileAddress = common.HexToAddress("0x000000000000000000636F6e736F6c652e6c6f67")
 
 // consolePrecompile is a debug precompile contract that simulates the `console.sol` functionality
 type consolePrecompile struct{}
