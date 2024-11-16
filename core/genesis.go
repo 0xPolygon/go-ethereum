@@ -590,13 +590,15 @@ func DefaultKilnGenesisBlock() *Genesis {
 }
 
 // DeveloperGenesisBlock returns the 'geth --dev' genesis block.
-func DeveloperGenesisBlock(period uint64, gasLimit uint64, faucet common.Address) *Genesis {
+func DeveloperGenesisBlock(period uint64, gasLimit uint64, faucet common.Address, chainID uint64) *Genesis {
 	// Override the default period to the user requested one
 	config := *params.AllCliqueProtocolChanges
 	config.Clique = &params.CliqueConfig{
 		Period: period,
 		Epoch:  config.Clique.Epoch,
 	}
+
+	config.ChainID = new(big.Int).SetUint64(chainID)
 
 	// Assemble and return the genesis with the precompiles and faucet pre-funded
 	return &Genesis{
